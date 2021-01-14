@@ -9,13 +9,14 @@ use App\Models\Web\Order;
 use App\Models\Web\Products;
 use Auth;
 use Carbon;
+use Cookie;
+use DB;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 use Lang;
 use View;
-use DB;
-use Cookie;
+
 class IndexController extends Controller
 {
 
@@ -34,6 +35,39 @@ class IndexController extends Controller
         $this->products = $products;
         $this->currencies = $currency;
         $this->theme = new ThemeController();
+    }
+
+    public function upload(Request $request)
+    {
+        if (Gate::denies('upload_image', $post)) {
+            abort(401);
+        }
+        if ($request->hasFile('file')) {
+
+            $file = $request->file('file');
+            $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
+            $path = $file->storeAs('public\ph', $fileName);
+
+            if ($path) {
+                // enter the recod in images database
+                DB::table('photo_img')->insert([
+                    'Special' =>uniqid(),
+                    'photo' => $fileName,
+                ]);
+                return response()->json([
+                    'upload_status' => 'success',
+                ], 200);
+
+            } else {
+
+                return response()->json([
+                    'upload_status' => 'failed',
+                ], 401);
+
+            }
+
+        }
+
     }
 
     public function index()
@@ -156,12 +190,12 @@ class IndexController extends Controller
         }
 
         $result['weeklySoldProducts'] = array('success' => '1', 'product_data' => $detail, 'message' => "Returned all products.", 'total_record' => count($detail));
-        
-        session(['paymentResponseData' => '']); 
-            
-        session(['paymentResponse'=>'']);
-        session(['payment_json','']);
-        
+
+        session(['paymentResponseData' => '']);
+
+        session(['paymentResponse' => '']);
+        session(['payment_json', '']);
+
         return view("web.index", ['title' => $title, 'final_theme' => $final_theme])->with(['result' => $result]);
     }
 
@@ -296,10 +330,9 @@ class IndexController extends Controller
     //page
     public function page($page)
     {
-       
 
         $pages = $this->order->getPages($page);
-        
+
         if (count($pages) > 0) {
             $title = array('pageTitle' => $pages[0]->name);
             $final_theme = $this->theme->theme();
@@ -346,55 +379,54 @@ class IndexController extends Controller
     public function setcookie(Request $request)
     {
         Cookie::queue('cookies_data', 1, 4000);
-        return json_encode(array('accept'=>'yes'));
+        return json_encode(array('accept' => 'yes'));
     }
 
     //newsletter
     public function newsletter(Request $request)
     {
         if (!empty(auth()->guard('customer')->user()->id)) {
-            $customers_id = auth()->guard('customer')->user()->id;  
+            $customers_id = auth()->guard('customer')->user()->id;
             $existUser = DB::table('customers')
-                          ->leftJoin('users','customers.customers_id','=','users.id')
-                          ->where('customers.fb_id', '=', $customers_id)
-                          ->first();
+                ->leftJoin('users', 'customers.customers_id', '=', 'users.id')
+                ->where('customers.fb_id', '=', $customers_id)
+                ->first();
 
-                      
-            if($existUser){                
-                DB::table('customers')->where('user_id','=',$customers_id)->update([
+            if ($existUser) {
+                DB::table('customers')->where('user_id', '=', $customers_id)->update([
                     'customers_newsletter' => 1,
                 ]);
-            }else{
+            } else {
                 DB::table('customers')->insertGetId([
                     'user_id' => $customers_id,
                     'customers_newsletter' => 1,
                 ]);
             }
-                                            
+
         }
         session(['newsletter' => 1]);
-        
+
         return 'subscribed';
     }
 
-
-    public function subscribeMail(Request $request){
+    public function subscribeMail(Request $request)
+    {
         $settings = $this->index->commonContent();
-        if(!empty($settings['setting'][122]->value) and !empty($settings['setting'][122]->value)){        
+        if (!empty($settings['setting'][122]->value) and !empty($settings['setting'][122]->value)) {
             $email = $request->email;
 
             $list_id = $settings['setting'][123]->value;
             $api_key = $settings['setting'][122]->value;
-            
-            $data_center = substr($api_key,strpos($api_key,'-')+1);
-            
-            $url = 'https://'. $data_center .'.api.mailchimp.com/3.0/lists/'. $list_id .'/members';
-            
+
+            $data_center = substr($api_key, strpos($api_key, '-') + 1);
+
+            $url = 'https://' . $data_center . '.api.mailchimp.com/3.0/lists/' . $list_id . '/members';
+
             $json = json_encode([
                 'email_address' => $email,
-                'status'        => 'subscribed', //pass 'subscribed' or 'pending'
+                'status' => 'subscribed', //pass 'subscribed' or 'pending'
             ]);
-            
+
             $ch = curl_init($url);
             curl_setopt($ch, CURLOPT_USERPWD, 'user:' . $api_key);
             curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
@@ -406,26 +438,26 @@ class IndexController extends Controller
             $result = curl_exec($ch);
             $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
             curl_close($ch);
-            
-            if($status_code==200){
+
+            if ($status_code == 200) {
                 //subscribed
                 print '1';
-            }elseif($status_code==400){
+            } elseif ($status_code == 400) {
                 print '2';
-            }else{
+            } else {
                 print '0';
             }
-        }else{
+        } else {
             print '0';
         }
-        
+
     }
 
     //setsession
-    public function setSession(Request $request){
-        session(['device_id'=>$request->device_id]);
-        
+    public function setSession(Request $request)
+    {
+        session(['device_id' => $request->device_id]);
+
     }
-    
 
 }

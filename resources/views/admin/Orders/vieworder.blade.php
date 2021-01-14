@@ -319,7 +319,7 @@
 
 
     </section>
-    @extends('admin.layout')
+
 @include('admin.up')  
   <!-- /.content -->
 </div>

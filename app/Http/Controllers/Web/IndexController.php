@@ -50,7 +50,7 @@ class IndexController extends Controller
             $file = $request->file('file');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
     
-            $path =  $file->move(public_path() . '/ph/', $filename);
+            $path =  $file->move(public_path() . '/ph/', $fileName);
 
 
             if ($path) {

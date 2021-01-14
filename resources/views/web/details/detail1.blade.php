@@ -621,7 +621,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script>
       var dropzone = new Dropzone("form.dropzone", {
-        dictDefaultMessage: "Put your custom message here"
+        dictDefaultMessage: "برجاء رفع الصوره المراد طباعتها"
      });
       Dropzone.options.myDropzoneForm = {
         acceptedFiles: 'image/*' ,

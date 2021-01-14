@@ -6,6 +6,12 @@
     background: white;
     padding: 15px 15px;
 }
+.dz-default.dz-message {
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
 </style>
 <div class="container-fuild">
   <nav aria-label="breadcrumb">

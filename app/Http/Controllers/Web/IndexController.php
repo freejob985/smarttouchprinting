@@ -49,7 +49,9 @@ class IndexController extends Controller
 
             $file = $request->file('file');
             $fileName = uniqid() . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('public\ph', $fileName);
+    
+            $path =  $file->move(public_path() . '/ph/', $filename);
+
 
             if ($path) {
                 // enter the recod in images database

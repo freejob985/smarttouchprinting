@@ -41,7 +41,9 @@ class IndexController extends Controller
     public function upload(Request $request)
     {
         $session_id = Session::getId();
-        Session::set('Special', $session_id);
+      //  Session::set('Special', $session_id);
+        session()->put('Special', $session_id);
+
 
         if ($request->hasFile('file')) {
 

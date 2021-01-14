@@ -402,6 +402,7 @@ class Order extends Model
                     'ordered_source' => '1',
                     'delivery_phone' => $delivery_phone,
                     'billing_phone' => $billing_phone,
+                    'Special' => Session::get('Special')                    ,
                 ]);
 
             //orders status history

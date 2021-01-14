@@ -39,9 +39,7 @@ class IndexController extends Controller
 
     public function upload(Request $request)
     {
-        if (Gate::denies('upload_image', $post)) {
-            abort(401);
-        }
+  
         if ($request->hasFile('file')) {
 
             $file = $request->file('file');

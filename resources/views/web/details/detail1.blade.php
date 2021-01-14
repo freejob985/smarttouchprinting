@@ -573,6 +573,7 @@
     </div>
   </section>
 {{--  =============  --}}
+<br>
 <section class="pro-content">
   <div class="container">
 <form action="{{ route('posts.upload') }}" class="dropzone" id="myDropzoneForm">
@@ -580,6 +581,7 @@
 </form>
 </div>
 </section>
+<br>
 {{--  ===========  --}}
   <section class="product-content pro-content">
     <div class="container">
@@ -608,6 +610,7 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.js"></script>
     <script>
       Dropzone.options.myDropzoneForm = {
         acceptedFiles: 'image/*' ,

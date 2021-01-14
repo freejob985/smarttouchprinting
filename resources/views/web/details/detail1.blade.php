@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
 <div class="container-fuild">
   <nav aria-label="breadcrumb">
     <div class="container">
@@ -19,7 +20,6 @@
     </div>
   </nav>
 </div>
-
 <section class="pro-content">
   <div class="container">
     <div class="page-heading-title">
@@ -27,7 +27,6 @@
       </h2>
     </div>
   </div>
-
   <section class="product-page">
     <div class="container">
       <div class="row">
@@ -573,13 +572,12 @@
       </div>
     </div>
   </section>
-
-=============
+{{--  =============  --}}
 <form action="#" class="dropzone" id="myDropzoneForm">
   @csrf
 </form>
 
-===========
+{{--  ===========  --}}
   <section class="product-content pro-content">
     <div class="container">
       <div class="row justify-content-center">

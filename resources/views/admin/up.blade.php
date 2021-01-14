@@ -441,7 +441,6 @@ Codepen: https://codepen.io/supah/
     <figure>
         <img class="responsive-img img-thumbnail" width="95"
         <img src="{{Request::root()}}/ph/{{ $item_photo_img->photo}}" alt="" />
-        <figcaption>Daytona Beach <small>United States</small></figcaption>
       </figure>            
     @endforeach
     @endif

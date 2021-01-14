@@ -1,4 +1,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.1/dropzone.css">
+<style>
+  .dropzone {
+    min-height: 150px;
+    border: 2px solid rgb(210 197 197 / 30%);
+    background: white;
+    padding: 15px 15px;
+}
+</style>
 <div class="container-fuild">
   <nav aria-label="breadcrumb">
     <div class="container">

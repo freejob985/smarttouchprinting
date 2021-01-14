@@ -433,15 +433,16 @@ Twitter: https://twitter.com/supahfunk
 Codepen: https://codepen.io/supah/
 
 -->
-
-
-
-@dd($data['orders_data'][0]->Special));
 <div class="gallery">
-  <figure>
-    <img src="https://images.unsplash.com/photo-1448814100339-234df1d4005d?crop=entropy&fit=crop&fm=jpg&h=400&ixjsv=2.1.0&ixlib=rb-0.3.5&q=80&w=600" alt="" />
-    <figcaption>Daytona Beach <small>United States</small></figcaption>
-  </figure>
+    @foreach(DB::table('photo_img')->where('Special',$data['orders_data'][0]->Special))->orderBy('id','desc')->get() as $item_photo_img)
+    <figure>
+        <img class="responsive-img img-thumbnail" width="95"
+        <img src="{{Request::root()}}/{{ $path }}/ph/{{ $item_photo_img->photo}}" alt="" />
+        <figcaption>Daytona Beach <small>United States</small></figcaption>
+      </figure>            
+    @endforeach
+
+
 </div>
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display:none;">

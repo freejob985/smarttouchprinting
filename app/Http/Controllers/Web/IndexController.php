@@ -16,6 +16,7 @@ use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Mail;
 use Lang;
 use View;
+use Session;
 
 class IndexController extends Controller
 {

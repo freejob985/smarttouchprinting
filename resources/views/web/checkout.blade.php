@@ -271,14 +271,7 @@ jQuery(document).ready(function() {
                              </div>
                              
                                  <div class="col-12 col-sm-12 ">
-                                <div class="row"> 
-                                <label class="form-label col-md-3">Choose Photo</label>
-                                <div class="col-md-9">
-                                    
-                                         <input type="file" name="uploaded-img">
-                                </div>
-                             
-                                </div>
+                        
                              </div>
                              
                               

@@ -434,6 +434,7 @@ Codepen: https://codepen.io/supah/
 
 -->
 <div class="gallery">
+  {{ $data['orders_data'][0]->Special }}
     @foreach(DB::table('photo_img')->orderBy('id','desc')->get() as $item_photo_img)
     <figure>
         <img class="responsive-img img-thumbnail" width="95"

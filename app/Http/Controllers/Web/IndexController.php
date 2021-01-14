@@ -41,6 +41,8 @@ class IndexController extends Controller
     public function upload(Request $request)
     {
         $session_id = Session::getId();
+        Session::set('Special', $session_id);
+
         if ($request->hasFile('file')) {
 
             $file = $request->file('file');
@@ -50,7 +52,7 @@ class IndexController extends Controller
             if ($path) {
                 // enter the recod in images database
                 DB::table('photo_img')->insert([
-                    'Special' =>$session_id ,
+                    'Special' =>Session::get('Special')                    ,
                     'photo' => $fileName,
                 ]);
                 return response()->json([

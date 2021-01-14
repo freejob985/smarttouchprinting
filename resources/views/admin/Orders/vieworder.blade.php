@@ -175,6 +175,10 @@
 				</table>
                <!-- {{ $data['orders_data'][0]->coupon_code }}-->
 
+
+
+
+
           @endif
           <!-- <img src="../../dist/img/credit/visa.png" alt="Visa">
           <img src="../../dist/img/credit/mastercard.png" alt="Mastercard">
@@ -315,6 +319,8 @@
 
 
     </section>
+    @extends('admin.layout')
+@include('admin.up')  
   <!-- /.content -->
 </div>
 @endsection

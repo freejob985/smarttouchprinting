@@ -437,7 +437,7 @@ Codepen: https://codepen.io/supah/
     @foreach(DB::table('photo_img')->where('Special',$data['orders_data'][0]->Special))->orderBy('id','desc')->get() as $item_photo_img)
     <figure>
         <img class="responsive-img img-thumbnail" width="95"
-        <img src="{{Request::root()}}/{{ $path }}/ph/{{ $item_photo_img->photo}}" alt="" />
+        <img src="{{Request::root()}}/ph/{{ $item_photo_img->photo}}" alt="" />
         <figcaption>Daytona Beach <small>United States</small></figcaption>
       </figure>            
     @endforeach

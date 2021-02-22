@@ -89,12 +89,12 @@
                       </td>
                       <?php
                       if(!empty($products->discount_price)){
-                          $discount_price = $products->discount_price * session('currency_value');
+                          $discount_price = $products->discount_price  ;
                       }
                       if(!empty($products->final_price)){
-                        $flash_price = $products->final_price * session('currency_value');
+                        $flash_price = $products->final_price  ;
                       }
-                      $orignal_price = $products->price * session('currency_value');
+                      $orignal_price = $products->price  ;
 
 
                        if(!empty($products->discount_price)){
@@ -134,7 +134,7 @@
                     </td>
                     <td class="align-middle item-total col-12 col-md-1" align="center">
                       <span class="cart_price_{{$products->customers_basket_id}}">
-                        {{Session::get('symbol_left')}}{{$products->final_price * $products->customers_basket_quantity * session('currency_value')}}{{Session::get('symbol_right')}}
+                        {{Session::get('symbol_left')}}{{$products->final_price * $products->customers_basket_quantity  }}{{Session::get('symbol_right')}}
                         </span>
                     </td>
                   </tr>

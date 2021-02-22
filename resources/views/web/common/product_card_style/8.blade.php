@@ -17,9 +17,9 @@
           ?> 
             <?php
           if(!empty($products->discount_price)){
-            $discount_price = $products->discount_price * session('currency_value');
+            $discount_price = $products->discount_price  ;
           }
-          $orignal_price = $products->products_price * session('currency_value');
+          $orignal_price = $products->products_price  ;
 
           if(!empty($products->discount_price)){
 

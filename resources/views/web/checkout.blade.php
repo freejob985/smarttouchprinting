@@ -308,7 +308,7 @@ jQuery(document).ready(function() {
                                                         >
                                                        
                                                         
-                                                         <label for="{{$method_name}}">{{$services['name']}} --- {{Session::get('symbol_left')}}{{$services['rate']* session('currency_value')}}{{Session::get('symbol_right')}}</label>
+                                                         <label for="{{$method_name}}">{{$services['name']}} --- {{Session::get('symbol_left')}}{{$services['rate'] }}{{Session::get('symbol_right')}}</label>
                                                         </li>
                                                     @endforeach
                                                 </ul>
@@ -345,7 +345,7 @@ jQuery(document).ready(function() {
                                            
                                            @foreach( $result['cart'] as $products)
                                            <?php
-                                              $orignal_price = $products->final_price * session('currency_value');
+                                              $orignal_price = $products->final_price  ;
                                               $price+= $orignal_price * $products->customers_basket_quantity;
                                            ?>
 
@@ -392,7 +392,7 @@ jQuery(document).ready(function() {
                                                     </div>
                                                 </td>
                                                 <?php                                                      
-                                                    $orignal_price = $products->final_price * session('currency_value');
+                                                    $orignal_price = $products->final_price  ;
                                                 ?>
                                               <td class="item-price col-12 col-md-2"><span>{{Session::get('symbol_left')}}{{$orignal_price+0}}{{Session::get('symbol_right')}}</span></td>
                                               <td class="col-12 col-md-1">

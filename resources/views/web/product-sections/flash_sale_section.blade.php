@@ -70,8 +70,8 @@
                           <div class="price">            
                             
                             @if(!empty($products->flash_price))
-                            {{Session::get('symbol_left')}}{{($discounted_price+0) * session('currency_value')}}{{Session::get('symbol_right')}}
-                              <span>{{Session::get('symbol_left')}}{{($orignal_price+0) * session('currency_value')}}{{Session::get('symbol_right')}}</span>
+                            {{Session::get('symbol_left')}}{{($discounted_price+0)  }}{{Session::get('symbol_right')}}
+                              <span>{{Session::get('symbol_left')}}{{($orignal_price+0)  }}{{Session::get('symbol_right')}}</span>
                             
                             
                             @else
@@ -169,8 +169,8 @@
                             <span>{{$products->products_name}} </span>
 
                             @if(!empty($products->flash_price))
-                            <ins>{{Session::get('symbol_left')}}{{($discounted_price+0) * session('currency_value')}}{{Session::get('symbol_right')}}
-                              <del>{{Session::get('symbol_left')}}{{($orignal_price+0) * session('currency_value')}}{{Session::get('symbol_right')}}</del>
+                            <ins>{{Session::get('symbol_left')}}{{($discounted_price+0)  }}{{Session::get('symbol_right')}}
+                              <del>{{Session::get('symbol_left')}}{{($orignal_price+0)  }}{{Session::get('symbol_right')}}</del>
                             </ins>
                             
                             @else

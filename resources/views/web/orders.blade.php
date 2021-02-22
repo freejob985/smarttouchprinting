@@ -103,7 +103,7 @@
                       {{ date('d/m/Y', strtotime($orders->date_purchased))}}
                     </td>
                     <td class="col-12 col-md-2">
-                      {{Session::get('symbol_left')}}{{$orders->order_price * session('currency_value') }}{{Session::get('symbol_right')}}
+                      {{Session::get('symbol_left')}}{{$orders->order_price   }}{{Session::get('symbol_right')}}
                     </td>
                     <td class="col-12 col-md-3">
                         @if($orders->orders_status_id == '2')

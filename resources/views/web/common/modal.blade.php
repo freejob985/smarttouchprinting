@@ -164,12 +164,12 @@
                                 <?php
 
                                 if(!empty($result['detail']['product_data'][0]->discount_price)){
-                                  $discount_price = $result['detail']['product_data'][0]->discount_price * session('currency_value');
+                                  $discount_price = $result['detail']['product_data'][0]->discount_price  ;
                                 }
                                 if(!empty($result['detail']['product_data'][0]->flash_price)){
-                                  $flash_price = $result['detail']['product_data'][0]->flash_price * session('currency_value');
+                                  $flash_price = $result['detail']['product_data'][0]->flash_price  ;
                                 }
-                                $orignal_price = $result['detail']['product_data'][0]->products_price * session('currency_value');
+                                $orignal_price = $result['detail']['product_data'][0]->products_price  ;
 
                                  if(!empty($result['detail']['product_data'][0]->discount_price)){
 

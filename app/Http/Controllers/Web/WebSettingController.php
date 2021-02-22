@@ -66,7 +66,7 @@ class WebSettingController extends Controller
 			session(['symbol_right' => $currency->symbol_right]);
 			session(['symbol_left' => $currency->symbol_left]);
 			session(['currency_code' => $currency->code]);
-			session(['currency_value' => 0]);
+			session(['currency_value' => $currency->value]);
 
 			echo 'success';
 

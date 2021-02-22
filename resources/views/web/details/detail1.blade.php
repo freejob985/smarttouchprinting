@@ -241,12 +241,12 @@
                   class="total_price">{{Session::get('symbol_left')}}{{$flash_price+0}}{{Session::get('symbol_right')}}</sub>
                 <span>{{Session::get('symbol_left')}}{{$orignal_price+0}}{{Session::get('symbol_right')}} </span>
                 @elseif(!empty($result['detail']['product_data'][0]->discount_price))
-                <price class="total_price">
-                  {{Session::get('symbol_left')}}{{$discount_price+0}}{{Session::get('symbol_right')}}</price>
+            <price class="total_price">
+                  {{Session::get('symbol_left')}}{{Session::get('symbol_right')}}</price>
                 <span>{{Session::get('symbol_left')}}{{$orignal_price+0}}{{Session::get('symbol_right')}} </span>
                 @else
                 <price class="total_price">
-                  {{Session::get('symbol_left')}}{{$orignal_price+0}}{{Session::get('symbol_right')}}</price>
+                  {{Session::get('symbol_left')}}{{$result['detail']['product_data'][0]->products_price}}{{Session::get('symbol_right')}}</price>
                 @endif
 
               </div>
